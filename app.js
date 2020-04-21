@@ -5,8 +5,8 @@ const express = require('express'),
     mongoose = require('mongoose'),
     keys = require('./config/keys');
 
+require('./models/User');
 require('./services/passport');
-require('./models/User')
 
 const indexRouter = require('./routes/index'),
     usersRouter = require('./routes/users'),
