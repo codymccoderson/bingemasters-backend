@@ -1,7 +1,9 @@
 const express = require('express'),
     path = require('path'),
     cookieParser = require('cookie-parser'),
-    logger = require('morgan');
+    logger = require('morgan'),
+    mongoose = require('mongoose'),
+    keys = require('./config/keys');
 
 require('./services/passport');
 require('./routes/auth');
@@ -9,6 +11,8 @@ require('./routes/auth');
 const indexRouter = require('./routes/index'),
     usersRouter = require('./routes/users');
 
+mongoose.connect(keys.mongoURI);
+ 
 const app = express();
 
 app.use(logger('dev'));
