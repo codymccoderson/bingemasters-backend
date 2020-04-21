@@ -6,10 +6,11 @@ const express = require('express'),
     keys = require('./config/keys');
 
 require('./services/passport');
-require('./routes/auth');
+require('./models/User')
 
 const indexRouter = require('./routes/index'),
-    usersRouter = require('./routes/users');
+    usersRouter = require('./routes/users'),
+    googleRouter = require('./routes/auth');
 
 mongoose.connect(keys.mongoURI);
  
@@ -23,5 +24,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/', googleRouter);
 module.exports = app;
