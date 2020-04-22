@@ -6,7 +6,7 @@
 
 var app = require('../app');
 var debug = require('debug')('bingemasters-backend:server');
-var http = require('http');
+var http = require("http://localhost:5000");
 
 /**
  * Get port from environment and store in Express.
