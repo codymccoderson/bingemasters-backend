@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
+    renderContent() {
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return <li><a href="/auth/google">Login With Google</a></li>
+            default: 
+                return <li><a href="/api/logout">Logout</a></li>
+        }
     }
     render() { 
+        // dev test
+        console.log(this.props);
         return (
             <div className='Home'>
-                <p>This is the home page</p>
-                <a href="/auth/google">Log in with Google</a>
+                <ul>
+                    <li>This is the home page</li>
+                    {this.renderContent()}
+                </ul>
             </div>
           );
     }
 }
+
+function mapStateToProps({ auth }) {
+    return { auth };
+  }
+  
  
-export default Home;
+export default connect(mapStateToProps)(Home);
