@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
+import HiScorePost from './components/HiScorePost';
 import { connect } from 'react-redux';
 import * as actions from './actions'
 
@@ -17,6 +18,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' component={ Home }/>
+            {/* <Route exact path='/auth/scores' component={ HiScorePost }/> */}
           </Switch>
         </Router>
         

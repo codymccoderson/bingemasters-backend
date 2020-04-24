@@ -7,12 +7,13 @@ const express = require('express'),
     mongoose = require('mongoose'),
     keys = require('./config/keys');
 
-require('./models/User');
+require('./models/UserModel');
 require('./services/passport');
 
 const indexRouter = require('./routes/index'),
     usersRouter = require('./routes/users'),
-    googleRouter = require('./routes/auth');
+    googleRouter = require('./routes/auth'),
+    scoreRouter = require('./routes/score');
 
 mongoose.connect(keys.mongoURI);
  
@@ -42,4 +43,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/', googleRouter);
+app.use('/', scoreRouter);
 module.exports = app;
