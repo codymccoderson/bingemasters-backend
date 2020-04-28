@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import another_retro_tv from '../another_retro_tv.png';
 import Instructions from './Instructions';

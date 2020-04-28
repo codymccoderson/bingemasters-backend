@@ -15,8 +15,8 @@ router.post('/api/scores/post', requireLogin, async (req, res) => {
     const { googleId, name, score} = req.body;
     await UserModel.updateOne({ googleId }, { name: name }, { score: score});
     // dummy data -- must have save to save changes
-    req.user.name = "ABC";
-    req.user.score = 7;
+    req.user.name = "CAT";
+    req.user.score = 8;
     await req.user.save();
 
     res.status(200).json({ status: "Success"});

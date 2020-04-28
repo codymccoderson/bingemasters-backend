@@ -7,6 +7,9 @@ import * as actions from './actions'
 import Leaderboard from './components/Leaderboard';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
 
   render() {
     // dev test
