@@ -7,9 +7,9 @@ class Home extends Component {
             case null:
                 return;
             case false:
-                return <li><a href="/auth/google">Login With Google</a></li>
+                return <a href="/auth/google" img src=''>Sign in with Google</a>
             default: 
-                return <li><a href="/api/logout">Logout</a></li>
+                return <a href="/api/logout">Logout</a>
         }
     }
     render() { 

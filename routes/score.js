@@ -4,12 +4,13 @@ const express = require('express');
 const router = express.Router();
 const requireLogin = require('../middlewares/requireLogin');
 
-router.get('/auth/scores', async (req, res) => {
+router.get('/api/scores', async (req, res) => {
     const users = await UserModel.find( {}, 'name score -_id').sort({ score: -1 }).limit(100);
-    res.status(200).json(users);
+    return res.status(200).send(users)
+    
 });
 
-router.post('/auth/scores/post', requireLogin, async (req, res) => {
+router.post('/api/scores/post', requireLogin, async (req, res) => {
     // DONT FORGET TO ADD SCORE LATER
     const { googleId, name, score} = req.body;
     await UserModel.updateOne({ googleId }, { name: name }, { score: score});
