@@ -258,7 +258,9 @@ class Leaderboard extends React.Component {
     state = {
         clickedReturn: false,
         list: [],
-        formFields: {name:'', score:''}
+        formFields: {name:'', score:''},
+        name:'',
+        score:''
     }
 
     componentDidMount() {
@@ -280,16 +282,35 @@ class Leaderboard extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         //(event.target)
-        const data = {user: 'zoo', score: 100}
-        fetch('/api/scores/post', {
+        const data = {name: 'zoo', score: 100}
+        
+        fetch('http://localhost:5000/api/scores/post', {
             method: 'POST',
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
               },
             body: JSON.stringify(data),
+            
         });
     }
+
+    // handleSubmit(e){
+    //     e.preventDefault();
+        
+    //     const userScore = {
+    //         name : this.state.name,
+    //         score: this.state.score
+    //     };
+
+    //     axios.post('localhost:5000/api/scores/post', userScore)
+    //         .then(res => console.log(res.data))
+
+    //     this.setState({
+    //         name: '', 
+    //         score:''
+    //     })
+    // }
 
     inputChangeHandler(e) {
         let formFields = {...this.state.formFields};
@@ -297,6 +318,18 @@ class Leaderboard extends React.Component {
         this.setState({
          formFields
         });
+       }
+    
+       onChangeName(e) {
+           this.setState({
+               name: e.target.value
+           });
+       }
+
+       onChangeScore(e) {
+           this.setState({
+               score: e.target.value
+           });
        }
      
        formHandler(formFields) {
@@ -314,6 +347,7 @@ class Leaderboard extends React.Component {
     render() {
 
         const { list } = this.state;
+        const { formFields } = this.state;
 
         if (this.state.clickedReturn === false) {
 
@@ -344,31 +378,26 @@ class Leaderboard extends React.Component {
                             )
                             }
                         </LeaderboardTable>
-                        <form onsubmit={this.handleSubmit}>
-                            <label/>Name
-                            <br/>
-                            <input 
+                        
+                        <form onSubmit={this.handleSubmit.bind(this)}>
+                
+                        <label/>Name:
+                        <input  
+                            type="text"
+                            value={this.state.name}
+                            onChange={this.onChangeName.bind(this)}
+                        />
+                        <label/>Score:
+                        <input 
                             type="text" 
-                            name="name" 
-                            placeholder="Name" 
-                            maxLength='3'
-                            onChange={(e) => this.inputChangeHandler.call(this, e)} 
-                            value={this.state.formFields.name} 
-                            />
-                            <br/>
-                            <label/>Score
-                            <br/>
-                            <input
-                            type="number"
-                            name="score"
-                            placeholder="dummy input for score"
-                            maxLength='1'
-                            onChange={(e) => this.inputChangeHandler.call(this, e)} 
-                            value={this.state.formFields.score}
-                            />
-                            <button>Submit</button>
+                            value={this.state.score}
+                            onChange={this.onChangeScore.bind(this)}
+                        />
+                        <input 
+                            type="submit" 
+                            value="Create Todo" 
+                        />
                         </form>
-                    </div>
                     <ButtonLine>
                         <ReturnHomeButton 
                             type="submit"
@@ -376,6 +405,7 @@ class Leaderboard extends React.Component {
                             >Return Home      
                         </ReturnHomeButton>
                     </ButtonLine>
+                    </div>
                 </StyledStartGame>
             </StartGameBackground>
         )} else {

@@ -22,9 +22,9 @@ router.get('/api/scores', async (req, res) => {
 //     res.status(200).json({ status: "Success"});
 // });
 
-router.post('/api/scores/post', requireLogin, function(req, res, next) {
+router.post('/api/scores/post', function(req, res, next) {
     if (!req.body) return res.sendStatus(400)
-    if (!req.user) return res.sendStatus(401)
+    
     let regdata = new UserModel(req.body);
     regdata.save()
     .then(item => {
