@@ -364,9 +364,9 @@ class MultipleChoice extends React.Component {
                 </AppWrapper>
             </HTMLWrapper>
         )} else if (this.state.count === 0 && this.state.currentScore > 0) {
-            return <Leaderboard/>
+            return <Leaderboard currentScore={this.state.currentScore}/>
         } else if (this.state.wrongAnswer === true && this.state.currentScore > 0) {
-            return <Leaderboard/>
+            return <Leaderboard currentScore={this.state.currentScore}/>
         } else {
             return <GameOver/>
         }

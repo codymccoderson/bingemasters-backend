@@ -280,9 +280,10 @@ class Leaderboard extends React.Component {
     }
 
     handleSubmit = (event) => {
+        // Remove this and pop up score submitted modal screen?
         event.preventDefault();
         //(event.target)
-        const data = {name: 'zoo', score: 100}
+        const data = {name: this.state.name, score: this.props.currentScore}
         
         fetch('http://localhost:5000/api/scores/post', {
             method: 'POST',
@@ -291,6 +292,8 @@ class Leaderboard extends React.Component {
                 "Content-Type": "application/json"
               },
             body: JSON.stringify(data),
+
+            //implement an auto redirect to home screen after letting them know (not through alert) score entry was submitted
             
         });
     }
@@ -390,7 +393,7 @@ class Leaderboard extends React.Component {
                         <label/>Score:
                         <input 
                             type="text" 
-                            value={this.state.score}
+                            value={this.props.currentScore}
                             onChange={this.onChangeScore.bind(this)}
                         />
                         <input 
