@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import another_retro_tv from '../another_retro_tv.png';
-import FetchRandomMovieStar from './FetchRandomMovieStar';
 import HomePage from './HomePage';
 import MultipleChoice from './MultipleChoice';
 

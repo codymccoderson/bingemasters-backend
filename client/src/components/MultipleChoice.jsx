@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import another_retro_tv from '../another_retro_tv.png';
 import getActorsPage from '../utils/getActorsPage';
 import randomizer from '../utils/randomizer';
+import Leaderboard from '../components/Leaderboard';
 
 const HTMLWrapper = styled.div`
 
@@ -281,7 +282,8 @@ class MultipleChoice extends React.Component {
     resetClock () {
         clearInterval(this.myInterval)
         this.setState({
-            count: 60
+            // change
+            count: 6
         })
     }
 
@@ -302,6 +304,7 @@ class MultipleChoice extends React.Component {
         const imageURL = `https://image.tmdb.org/t/p/w235_and_h235_bestv2${this.state.profilePath}`;
         const { count } = this.state;
         const { currentScore } = this.state;
+        
         
         if (this.state.count >= 1 && this.state.wrongAnswer === false) {
 
@@ -360,7 +363,11 @@ class MultipleChoice extends React.Component {
                     </TimeAndScoreWrapper>
                 </AppWrapper>
             </HTMLWrapper>
-        )} else {
+        )} else if (this.state.count === 0 && this.state.currentScore > 0) {
+            return <Leaderboard/>
+        } else if (this.state.wrongAnswer === true && this.state.currentScore > 0) {
+            return <Leaderboard/>
+        } else {
             return <GameOver/>
         }
     }

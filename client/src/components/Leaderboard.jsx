@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import another_retro_tv from '../another_retro_tv.png';
 import HomePage from './HomePage';
 import tv_static2 from '../tv_static2.jpg';
+import axios from 'axios';
 
 const StartGameBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
@@ -250,11 +251,14 @@ const ReturnHomeButton = styled.button`
     }
 `;
 
+
+
 class Leaderboard extends React.Component {
 
     state = {
         clickedReturn: false,
-        list: []
+        list: [],
+        formFields: {name:'', score:''}
     }
 
     componentDidMount() {
@@ -272,6 +276,40 @@ class Leaderboard extends React.Component {
         .then(res => res.json())
         .then(list => this.setState({ list }))
     }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        //(event.target)
+        const data = {user: 'zoo', score: 100}
+        fetch('/api/scores/post', {
+            method: 'POST',
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              },
+            body: JSON.stringify(data),
+        });
+    }
+
+    inputChangeHandler(e) {
+        let formFields = {...this.state.formFields};
+        formFields[e.target.name] = e.target.value;
+        this.setState({
+         formFields
+        });
+       }
+     
+       formHandler(formFields) {
+        axios.post('/api/scores/post', formFields)
+          .then(function(response){
+            console.log(response);
+            //Perform action based on response
+        })
+          .catch(function(error){
+            console.log(error);
+            //Perform action based on error
+          });
+       }
 
     render() {
 
@@ -291,10 +329,11 @@ class Leaderboard extends React.Component {
                             <div>
                             {list.map((item) => {
                                 return(
-                                    <th>
-                                        <tr>{item.name}</tr>
-                                        <tr>{item.score}</tr>
-                                    </th>
+                                    <tr>
+                                        <th>{item.name}</th>
+                                        
+                                        <th>{item.score}</th>
+                                    </tr>
                                 );
                             })}
                             </div>
@@ -304,8 +343,31 @@ class Leaderboard extends React.Component {
                                 </div>
                             )
                             }
-                            
                         </LeaderboardTable>
+                        <form onsubmit={this.handleSubmit}>
+                            <label/>Name
+                            <br/>
+                            <input 
+                            type="text" 
+                            name="name" 
+                            placeholder="Name" 
+                            maxLength='3'
+                            onChange={(e) => this.inputChangeHandler.call(this, e)} 
+                            value={this.state.formFields.name} 
+                            />
+                            <br/>
+                            <label/>Score
+                            <br/>
+                            <input
+                            type="number"
+                            name="score"
+                            placeholder="dummy input for score"
+                            maxLength='1'
+                            onChange={(e) => this.inputChangeHandler.call(this, e)} 
+                            value={this.state.formFields.score}
+                            />
+                            <button>Submit</button>
+                        </form>
                     </div>
                     <ButtonLine>
                         <ReturnHomeButton 

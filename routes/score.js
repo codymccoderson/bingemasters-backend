@@ -10,16 +10,29 @@ router.get('/api/scores', async (req, res) => {
     
 });
 
-router.post('/api/scores/post', requireLogin, async (req, res) => {
-    // DONT FORGET TO ADD SCORE LATER
-    const { googleId, name, score} = req.body;
-    await UserModel.updateOne({ googleId }, { name: name }, { score: score});
-    // dummy data -- must have save to save changes
-    req.user.name = "CAT";
-    req.user.score = 8;
-    await req.user.save();
+// router.post('/api/scores/post', requireLogin, async (req, res) => {
+//     // DONT FORGET TO ADD SCORE LATER
+//     const { googleId, name, score} = req.body;
+//     await UserModel.updateOne({ googleId }, { name: name }, { score: score});
+//     // dummy data -- must have save to save changes
+//     // req.user.name = "AAA";
+//     // req.user.score = 8;
+//     await req.user.save();
 
-    res.status(200).json({ status: "Success"});
-});
- 
+//     res.status(200).json({ status: "Success"});
+// });
+
+router.post('/api/scores/post', requireLogin, function(req, res, next) {
+    if (!req.body) return res.sendStatus(400)
+    if (!req.user) return res.sendStatus(401)
+    let regdata = new UserModel(req.body);
+    regdata.save()
+    .then(item => {
+       res.status(200).send("Score has been saved to the database!")
+     })
+     .catch(err => {
+       res.status(400).send("Unable to save the item to the database!");
+     });
+  });
+
 module.exports = router;

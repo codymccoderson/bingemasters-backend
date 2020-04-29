@@ -3,6 +3,7 @@ import getRandomPage from '../utils/getRandomPage';
 import GameOver from './GameOver';
 import styled from 'styled-components';
 import another_retro_tv from '../another_retro_tv.png';
+import Leaderboard from '../components/Leaderboard';
 
 const HTMLWrapper = styled.div`
 
@@ -175,10 +176,10 @@ class FetchRandomMovieStar extends React.Component {
         actorName: "",
         movieName: "",
         secondMovieName: "",
-        count: 60,
+        count: 6,
         resetTimer: false,
         currentScore: 0,
-        gameOver: false
+        gameOverState: false
 
     };
 
@@ -271,6 +272,7 @@ class FetchRandomMovieStar extends React.Component {
         const imageURL = `https://image.tmdb.org/t/p/w235_and_h235_bestv2${this.state.profilePath}`;
         const { count } = this.state;
         const { currentScore } = this.state;
+        const { gameOverState } = this.state;
         
         if (this.state.count >= 1) {
 
@@ -317,11 +319,16 @@ class FetchRandomMovieStar extends React.Component {
                     </TimeAndScoreWrapper>
                 </AppWrapper>
             </HTMLWrapper>
-        )} else {
-            return <GameOver/>
-        }
+        )} else if (this.state.count === 0 && this.state.currentScore === 0 && this.state.gameOverState === true) {
+                // this.state.gameOver === true;
+                return <GameOver/>
+        } else if (this.state.count === 0 && this.state.currentScore > 0 && this.state.gameOverState === true) {
+                // this.state.gameOver === false;
+                return <Leaderboard/>
+        
+        }}
     }
-};
+
 
 export default FetchRandomMovieStar;
     
