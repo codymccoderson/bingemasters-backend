@@ -203,6 +203,8 @@ const ButtonLine = styled.div`
 const ReturnHomeButton = styled.button`
     background-color: pink;
     color: black;
+    :hover {color: white};
+    transition: color .1s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
     padding: 10px;
@@ -349,10 +351,11 @@ class Leaderboard extends React.Component {
         return(
             <StartGameBackground>
                 <StyledStartGame>
-                    <div className="LeaderboardWrapper">
+    
                         <LeaderboardTitle>
                             Greatest Bingemasters
                         </LeaderboardTitle>
+                        <div className="LeaderboardWrapper" style={{overflowY:'scroll', border:'1px black'}}>
                         <LeaderboardTable>
                             {list.length ? (
                             <div>
@@ -367,23 +370,24 @@ class Leaderboard extends React.Component {
                             })}
                             </div>
                             ) : (
-                                <div>
-                                    <h2>You must be logged in to view the leaderboard</h2>
-                                </div>
+                                <span>
+                                    <p style={{fontSize: '1rem', width: '100%', marginright:'20%'}}>Login to view the leaderboard</p>
+                                </span>
                             )
                             }
                         </LeaderboardTable>
                        
                        
                     <ButtonLine>
-                        <ReturnHomeButton 
-                            type="submit"
-                            onClick={this.handleClickReturn.bind(this)}
-                            >Return Home      
-                        </ReturnHomeButton>
+                        
                        
                     </ButtonLine>
                     </div>
+                    <ReturnHomeButton 
+                        type="submit"
+                        onClick={this.handleClickReturn.bind(this)}
+                        >Return Home      
+                    </ReturnHomeButton>
                 </StyledStartGame>
             </StartGameBackground>
         )} else {

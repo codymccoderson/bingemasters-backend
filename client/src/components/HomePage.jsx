@@ -145,7 +145,9 @@ const ButtonLine = styled.div`
 const StartGameButton = styled.button`
     background-color: pink;
     color: black;
-    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    :hover {color: white};
+    transition: color .1s;
+    font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
     padding: 10px;
     margin: 20px;
@@ -172,9 +174,10 @@ const StartGameButton = styled.button`
 
 const HowToPlayButton = styled.button`
     background-color: pink;
-    :hover {color: green};
+    :hover {color: white};
+    transition: color .1s;
     color: black;
-    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
     padding: 10px;
     margin: 20px;
@@ -227,7 +230,9 @@ const ButtonLine2 = styled.div`
 const LeaderboardButton = styled.button`
     background-color: pink;
     color: black;
-    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    :hover {color: white};
+    transition: color .1s;
+    font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
     padding: 10px;
     margin: 5px;
@@ -332,6 +337,8 @@ class HomePage extends React.Component {
                         </HowToPlayButton>
                     </ButtonLine>
                     <ButtonLine2>
+                        
+                        <Modal/>
                         <LeaderboardButton
                             type="submit"
                             onClick={this.handleClickLeaderboard.bind(this)}
@@ -347,7 +354,7 @@ class HomePage extends React.Component {
         )} else if (this.state.clickedGame === true && this.state.clickedHowTo === false && this.state.clickedLeaderboard === false) {
             return <MultipleChoice/>
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === true && this.state.clickedLeaderboard === false) {
-            return <Modal/>
+            return <Instructions/>
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === false && this.state.clickedLeaderboard === true) {
             return <Leaderboard/>
     }

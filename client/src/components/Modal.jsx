@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import HomePage from './HomePage';
+import './Modal.css';
 
 
 class Modal extends Component {
@@ -27,11 +28,16 @@ class Modal extends Component {
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"
            onRequestClose={this.handleCloseModal}
+           className='Modal'
+           shouldCloseOnOverlayClick={false}
+           
         >
           <p>Are you sure?</p>
           <p>If you continue, your score will not be recorded.</p>
-          <a href='/'><button>Continue</button></a>
-          <button onClick={this.handleCloseModal.bind(this)}>Go Back</button>
+          <div>
+          <a href='/'><button className="ModalButton">Continue</button></a>
+          <button className="ModalButton" onClick={this.handleCloseModal.bind(this)}>Go Back</button>
+          </div>
         </ReactModal>
       </div>
     );
