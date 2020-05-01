@@ -5,6 +5,8 @@ import HomePage from './HomePage';
 import tv_static2 from '../tv_static2.jpg';
 import axios from 'axios';
 import Modal from './Modal';
+import PostScore from './PostScore';
+import { connect } from 'react-redux';
 
 const StartGameBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
@@ -279,7 +281,7 @@ class Leaderboard extends React.Component {
         .then(res => res.json())
         .then(list => this.setState({ list }))
     }
-
+    
     handleSubmit = (event) => {
         // Remove this and pop up score submitted modal screen?
         event.preventDefault();
@@ -335,7 +337,29 @@ class Leaderboard extends React.Component {
                score: e.target.value
            });
        }
-     
+       
+       renderContent1() {
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return <li><a href="/auth/google">Login With Google</a></li>
+            default: 
+                return <li><a href="/api/logout">Logout</a></li>
+        }
+    }
+
+    renderContent2() {
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return;
+            default: 
+                return <PostScore/>
+
+        }
+    }
        formHandler(formFields) {
         axios.post('/api/scores/post', formFields)
           .then(function(response){
@@ -383,39 +407,25 @@ class Leaderboard extends React.Component {
                             )
                             }
                         </LeaderboardTable>
-                        
-                        Submit your score to the overall leaderboard
-                        <form onSubmit={this.handleSubmit.bind(this)} >
-                            
-                        <label/>Name:
-                        <input  
-                            type="text"
-                            value={this.state.name}
-                            required
-                            maxLength="3"
-                            onChange={this.onChangeName.bind(this)}
-                        />
-                        
-                        <p>Streak Score: {this.props.currentScore}</p>
-
-                        <input 
-                            type="submit" 
-                            value="Submit" 
-                        />
-                        </form>
+                       
+                        {this.renderContent2()}
                     <ButtonLine>
                         <ReturnHomeButton 
                             type="submit"
                             onClick={this.handleClickReturn.bind(this)}
                             >Return Home      
                         </ReturnHomeButton>
-                        <Modal></Modal>
+                       
                     </ButtonLine>
                     </div>
                 </StyledStartGame>
             </StartGameBackground>
         )} else {
             return <HomePage/> 
-}}}
+}}
 
-export default Leaderboard;
+}
+function mapStateToProps ({ auth }) {
+    return { auth };
+}
+export default connect(mapStateToProps)(Leaderboard);

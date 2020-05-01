@@ -6,6 +6,9 @@ import Leaderboard from './Leaderboard';
 import tv_static2 from '../tv_static2.jpg';
 import MultipleChoice from './MultipleChoice';
 import { connect } from 'react-redux';
+import Modal from './Modal';
+import PostScore from './PostScore';
+import { Link } from 'react-router-dom';
 
 
 const StartGameBackground = styled.div`
@@ -332,7 +335,7 @@ class HomePage extends React.Component {
         })
     }
 
-    renderContent() {
+    renderContent1() {
         switch (this.props.auth) {
             case null:
                 return;
@@ -340,6 +343,18 @@ class HomePage extends React.Component {
                 return <li><a href="/auth/google">Login With Google</a></li>
             default: 
                 return <li><a href="/api/logout">Logout</a></li>
+        }
+    }
+
+    renderContent2() {
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return;
+            default: 
+                return <PostScore/>
+
         }
     }
 
@@ -374,7 +389,7 @@ class HomePage extends React.Component {
                             >All-Time Leaderboard
                         </LeaderboardButton>
 
-                        {this.renderContent()}
+                        {this.renderContent1()}
                     </ButtonLine2>
                 </StyledStartGame>
             </StartGameBackground>
