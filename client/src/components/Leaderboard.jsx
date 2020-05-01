@@ -4,6 +4,7 @@ import another_retro_tv from '../another_retro_tv.png';
 import HomePage from './HomePage';
 import tv_static2 from '../tv_static2.jpg';
 import axios from 'axios';
+import Modal from './Modal';
 
 const StartGameBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
@@ -351,6 +352,7 @@ class Leaderboard extends React.Component {
 
         const { list } = this.state;
         const { formFields } = this.state;
+        const { name, score } = this.state;
 
         if (this.state.clickedReturn === false) {
 
@@ -376,29 +378,29 @@ class Leaderboard extends React.Component {
                             </div>
                             ) : (
                                 <div>
-                                    <h2>No Recorded Highscores Found</h2>
+                                    <h2>You must be logged in to view or post in the leaderboard</h2>
                                 </div>
                             )
                             }
                         </LeaderboardTable>
                         
-                        <form onSubmit={this.handleSubmit.bind(this)}>
-                
+                        Submit your score to the overall leaderboard
+                        <form onSubmit={this.handleSubmit.bind(this)} >
+                            
                         <label/>Name:
                         <input  
                             type="text"
                             value={this.state.name}
+                            required
+                            maxLength="3"
                             onChange={this.onChangeName.bind(this)}
                         />
-                        <label/>Score:
-                        <input 
-                            type="text" 
-                            value={this.props.currentScore}
-                            onChange={this.onChangeScore.bind(this)}
-                        />
+                        
+                        <p>Streak Score: {this.props.currentScore}</p>
+
                         <input 
                             type="submit" 
-                            value="Create Todo" 
+                            value="Submit" 
                         />
                         </form>
                     <ButtonLine>
@@ -407,6 +409,7 @@ class Leaderboard extends React.Component {
                             onClick={this.handleClickReturn.bind(this)}
                             >Return Home      
                         </ReturnHomeButton>
+                        <Modal></Modal>
                     </ButtonLine>
                     </div>
                 </StyledStartGame>

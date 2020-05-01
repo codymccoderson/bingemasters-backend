@@ -5,8 +5,10 @@ const express = require('express'),
     passport = require('passport'),
     logger = require('morgan'),
     mongoose = require('mongoose'),
-    keys = require('./config/keys');
-    cors = require('cors');
+    keys = require('./config/keys'),
+    cors = require('cors'),
+    bodyParser = require('body-parser');
+
 
 require('./models/UserModel');
 require('./services/passport');
@@ -51,6 +53,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

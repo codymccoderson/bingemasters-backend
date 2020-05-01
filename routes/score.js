@@ -1,10 +1,10 @@
 const UserModel = require('../models/UserModel');
-
 const express = require('express');
 const router = express.Router();
 const requireLogin = require('../middlewares/requireLogin');
 
-router.get('/api/scores', async (req, res) => {
+
+router.get('/api/scores', requireLogin, async (req, res) => {
     const users = await UserModel.find( {}, 'name score -_id').sort({ score: -1 }).limit(100);
     return res.status(200).send(users)
     
@@ -22,11 +22,10 @@ router.get('/api/scores', async (req, res) => {
 //     res.status(200).json({ status: "Success"});
 // });
 
-router.post('/api/scores/post', function(req, res, next) {
-    if (!req.body) return res.sendStatus(400)
+router.post('/api/scores/post', async (req, res, next) => {
     
-    let regdata = new UserModel(req.body);
-    regdata.save()
+    let regdata = await new UserModel(req.body);
+    await regdata.save()
     .then(item => {
        res.status(200).send("Score has been saved to the database!")
      })
