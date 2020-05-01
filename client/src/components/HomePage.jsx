@@ -95,8 +95,8 @@ const StyledStartGame = styled.div`
 
 const StartGameTitle = styled.h1`
     color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 96px;
+    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 80px;
     @media screen and (max-width: 1380px) {
         font-size: 78px;
     }
@@ -145,7 +145,7 @@ const ButtonLine = styled.div`
 const StartGameButton = styled.button`
     background-color: pink;
     color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
     padding: 10px;
     margin: 20px;
@@ -172,8 +172,9 @@ const StartGameButton = styled.button`
 
 const HowToPlayButton = styled.button`
     background-color: pink;
+    :hover {color: green};
     color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
     padding: 10px;
     margin: 20px;
@@ -226,7 +227,7 @@ const ButtonLine2 = styled.div`
 const LeaderboardButton = styled.button`
     background-color: pink;
     color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
     padding: 10px;
     margin: 5px;
@@ -334,7 +335,7 @@ class HomePage extends React.Component {
                         <LeaderboardButton
                             type="submit"
                             onClick={this.handleClickLeaderboard.bind(this)}
-                            >All-Time Leaderboard
+                            >Leaderboard
                         </LeaderboardButton>
                    
                         {this.renderContent1()}

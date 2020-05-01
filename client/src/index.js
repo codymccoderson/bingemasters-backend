@@ -7,6 +7,8 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 import reducers from './reducers';
+import './fonts/dasGerman.otf';
+
 
 // stand in data
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));

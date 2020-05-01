@@ -124,7 +124,7 @@ const StyledStartGame = styled.div`
 `;
 
 const LeaderboardTitle = styled.h1`
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 48px;
     text-align: center;
     position: relative;
