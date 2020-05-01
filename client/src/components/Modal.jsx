@@ -9,9 +9,6 @@ class Modal extends Component {
     this.state = {
       showModal: false
     };
-    
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
   
   handleOpenModal () {
@@ -25,7 +22,7 @@ class Modal extends Component {
   render () {
     return (
       <div>
-        <button onClick={this.handleOpenModal}>Trigger Modal</button>
+        <button onClick={this.handleOpenModal.bind(this)}>Main Menu</button>
         <ReactModal 
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"
@@ -33,8 +30,8 @@ class Modal extends Component {
         >
           <p>Are you sure?</p>
           <p>If you continue, your score will not be recorded.</p>
-          <a href='/'>Continue</a>
-          <button onClick={this.handleCloseModal}>Go Back</button>
+          <a href='/'><button>Continue</button></a>
+          <button onClick={this.handleCloseModal.bind(this)}>Go Back</button>
         </ReactModal>
       </div>
     );

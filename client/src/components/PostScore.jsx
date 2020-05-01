@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import HomePage from './HomePage';
+import Modal from '../components/Modal';
+import ReactModal from 'react-modal';
 
 class PostScore extends Component {
-    state = {}
+    state = {
+        showModal: false
+    };
 
     onChangeName(e) {
         this.setState({
             name: e.target.value
         });
     }
-    
+
+    handleOpenModal () {
+        this.setState({ showModal: true });
+      }    
+
 handleSubmit = (event) => {
     // Remove this and pop up score submitted modal screen?
     event.preventDefault();
@@ -50,8 +58,19 @@ render() {
                         <input 
                             type="submit" 
                             value="Submit" 
+                            onClick={this.handleOpenModal.bind(this)}
                         />
+                        <ReactModal 
+                        isOpen={this.state.showModal}
+                        contentLabel="onRequestClose Example"
+                        >
+                        <p>Your score has been submitted!</p>
+                        <p>See the leaderboard to see your entry!</p>
+                        <a href='/'><button>Main Menu</button></a>
+                        
+                        </ReactModal>
                         </form>
+                        <Modal/>
         </div>
     )
 }

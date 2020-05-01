@@ -5,6 +5,9 @@ import another_retro_tv from '../another_retro_tv.png';
 import getActorsPage from '../utils/getActorsPage';
 import randomizer from '../utils/randomizer';
 import Leaderboard from '../components/Leaderboard';
+import { connect } from 'react-redux';
+import { FETCH_STREAK } from '../actions/types';
+import PostScore from '../components/PostScore';
 
 const HTMLWrapper = styled.div`
 
@@ -279,6 +282,18 @@ class MultipleChoice extends React.Component {
         }
     }
 
+    renderContent2() {
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return;
+            default: 
+                return <PostScore currentScore = {this.state.currentScore}/>
+
+        }
+    }
+
     resetClock () {
         clearInterval(this.myInterval)
         this.setState({
@@ -364,14 +379,20 @@ class MultipleChoice extends React.Component {
                 </AppWrapper>
             </HTMLWrapper>
         )} else if (this.state.count === 0 && this.state.currentScore > 0) {
-            return <Leaderboard currentScore={this.state.currentScore}/>
-        } else if (this.state.wrongAnswer === true && this.state.currentScore > 0) {
-            return <Leaderboard currentScore={this.state.currentScore}/>
+            return <PostScore currentScore={this.state.currentScore}/>
+        } else if (this.state.wrongAnswer === true && this.state.currentScore > 0 && (!!this.props.auth)) {
+            return <PostScore currentScore={this.state.currentScore}/>
+        } else if (this.state.wrongAnswer === true && this.state.currentScore > 0 && (!this.props.auth)) {
+            return <GameOver/>
         } else {
             return <GameOver/>
         }
     }
 };
+function mapStateToProps(auth) {
+    return { auth };
+    
+}
 
-export default MultipleChoice;
+export default connect(mapStateToProps)(MultipleChoice);
     

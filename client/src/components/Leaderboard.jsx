@@ -12,12 +12,10 @@ const StartGameBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
     background-size: 80vw 92vh;
     height: 100vh; 
-
     @media screen and (max-width: 850px) {
         background: url(${tv_static2}) no-repeat center center fixed;
         background-size: cover;
         height: 100vh;
-
     }
 `
 const StyledStartGame = styled.div`
@@ -30,115 +28,94 @@ const StyledStartGame = styled.div`
     position: relative;
     top: 100px;
     right: 150px;
-
     @media screen and (max-width: 1430px) {
         margin: 0 390px;
         width: 700px;
         height: 700px;
-
     }
-
     @media screen and (max-width: 1400px) {
         margin: 0 380px;
         width: 660px;
         height: 660px;
-
     }
     @media screen and (max-width: 1390px) {
         margin: 0 370px;
         width: 620px;
         height: 620px;
     }
-
     @media screen and (max-width: 1340px) {
         margin: 0 370px;
         width: 580px;
         height: 580px;
     }
-
     @media screen and (max-width: 1290px) {
         margin: 0 360px;
         width: 540px;
         height: 540px;
     }
-
     @media screen and (max-width: 1240px) {
         margin: 0 360px;
         width: 500px;
         height: 500px;
     }
-
     @media screen and (max-width: 1190px) {
         margin: 0 360px;
         width: 460px;
         height: 460px;
     }
-
     @media screen and (max-width: 1140px) {
         margin: 0 360px;
         width: 420px;
         height: 420px;
     }
-
     @media screen and (max-width: 1090px) {
         margin: 0 340px;
         width: 420px;
         height: 420px;
     }
-
     @media screen and (max-width: 1040px) {
         margin: 0 340px;
         width: 400px;
         height: 400px;
     }
-
     @media screen and (max-width: 990px) {
         margin: 0 320px;
         width: 380px;
         height: 380px;
     }
-
     @media screen and (max-width: 940px) {
         margin: 0 320px;
         width: 360px;
         height: 360px;
     }
-
     @media screen and (max-width: 890px) {
         margin: 0 300px;
         width: 340px;
         height: 340px;
     }
-
     @media screen and (max-width: 850px) {
         margin: 0 280px;
         width: 480px;
         height: 480px;
     }
-
     @media screen and (max-width: 840px) {
         margin: 0 280px;
-
     }
-
     @media screen and (max-width: 790px) {
         margin: 0 260px;
         width: 460px;
         height: 460px;
     }
-
     @media screen and (max-width: 740px) {
         margin: 0 240px;
         width: 440px;
         height: 440px;
     }
-
     @media screen and (max-width: 690px) {
         margin: 0 220px;
         width: 420px;
         height: 420px;
     }
-
     @media screen and (max-width: 640px) {
         margin: 0 200px;
         width: 400px;
@@ -152,23 +129,19 @@ const LeaderboardTitle = styled.h1`
     text-align: center;
     position: relative;
     left: 15px;
-
     @media screen and (max-width: 1400px) {
         font-size: 42px;
     }
-
     @media screen and (max-width: 1200px) {
         font-size: 36px;
         position: relative;
         left: 20px;
     }
-
     @media screen and (max-width: 1000px) {
         font-size: 32px;
         position: relative;
         left: 20px;
     }
-
     @media screen and (max-width: 1000px) {
         font-size: 32px;
         position: relative;
@@ -180,17 +153,14 @@ const LeaderboardTable = styled.table`
     list-style-type: none;
     position: relative;
     left: 230px;
-
     @media screen and (max-width: 1200px) {
         position: relative;
         left: 180px;
     }
-
     @media screen and (max-width: 850px) {
         position: relative;
         left: 160px;
     }
-
     th {
         -webkit-columns: 2;
         -moz-columns: 2;
@@ -200,26 +170,22 @@ const LeaderboardTable = styled.table`
         column-gap: 18em;
         font-weight: bolder;
         font-size: 20px;
-
         @media screen and (max-width: 1400px) {
             -webkit-column-gap: 16em;
             -moz-column-gap: 16em;
             column-gap: 16em;
         }
-
         @media screen and (max-width: 1300px) {
             -webkit-column-gap: 15em;
             -moz-column-gap: 15em;
             column-gap: 15em;
         }
-
         @media screen and (max-width: 1200px) {
             -webkit-column-gap: 12em;
             -moz-column-gap: 12em;
             column-gap: 12em;
         }
     }
-
     td {
         font-size: 24px;
         font-weight: bolder;
@@ -402,13 +368,13 @@ class Leaderboard extends React.Component {
                             </div>
                             ) : (
                                 <div>
-                                    <h2>You must be logged in to view or post in the leaderboard</h2>
+                                    <h2>You must be logged in to view the leaderboard</h2>
                                 </div>
                             )
                             }
                         </LeaderboardTable>
                        
-                        {this.renderContent2()}
+                       
                     <ButtonLine>
                         <ReturnHomeButton 
                             type="submit"

@@ -15,12 +15,10 @@ const StartGameBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
     background-size: 80vw 92vh;
     height: 100vh; 
-
     @media screen and (max-width: 850px) {
         background: url(${tv_static2}) no-repeat center center fixed;
         background-size: cover;
         height: 100vh;
-
     }
 `
 const StyledStartGame = styled.div`
@@ -34,35 +32,27 @@ const StyledStartGame = styled.div`
     position: relative;
     top: 230px;
     right: 150px;
-
     @media screen and (max-width: 1380px) {
         margin: 0 590px;
-
     }
     @media screen and (max-width: 1320px) {
         margin: 0 545px;
     }
-
     @media screen and (max-width: 1180px) {
         margin: 0 515px;
     }
-
     @media screen and (max-width: 1180px) {
         margin: 0 500px;
     }
-
     @media screen and (max-width: 1080px) {
         margin: 0 480px;
     }
-
     @media screen and (max-width: 950px) {
         margin: 0 435px;
     }
-
     @media screen and (max-width: 900px) {
         margin: 0 400px;
     }
-
     @media screen and (max-width: 850px) {
         margin: 0 450px;
         display: flex;
@@ -74,39 +64,30 @@ const StyledStartGame = styled.div`
         position: relative;
         top: 230px;
     }
-
     @media screen and (max-width: 800px) {
         margin: 0 410px;
     }
-
     @media screen and (max-width: 750px) {
         margin: 0 400px;
     }
-
     @media screen and (max-width: 700px) {
         margin: 0 380px;
     }
-
     @media screen and (max-width: 675px) {
         margin: 0 350px;
     }
-
     @media screen and (max-width: 650px) {
         margin: 0 340px;
     }
-
     @media screen and (max-width: 625px) {
         margin: 0 330px;
     }
-
     @media screen and (max-width: 600px) {
         margin: 0 320px;
     }
-
     @media screen and (max-width: 585px) {
         margin: 0 310px;
     }
-
     @media screen and (max-width: 575px) {
         margin: 0 300px;
     }
@@ -116,27 +97,21 @@ const StartGameTitle = styled.h1`
     color: black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 96px;
-
     @media screen and (max-width: 1380px) {
         font-size: 78px;
     }
-
     @media screen and (max-width: 1320px) {
         font-size: 72px;
     }
-
     @media screen and (max-width: 1180px) {
         font-size: 60px;
     }
-
     @media screen and (max-width: 1080px) {
         font-size: 48px;
     }
-
     @media screen and (max-width: 850px) {
         font-size: 60px;
     }
-
     @media screen and (max-width: 650px) {
         font-size: 52px;
     }  
@@ -144,32 +119,24 @@ const StartGameTitle = styled.h1`
 
 const ButtonLine = styled.div`
     display: flex;
-
-
     @media screen and (max-width: 750px) {
         margin: 0 360px;
     }
-
     @media screen and (max-width: 700px) {
         margin: 0 340px;
     }
-
     @media screen and (max-width: 675px) {
         margin: 0 320px;
     }
-
     @media screen and (max-width: 650px) {
         margin: 0 300px;
     }
-
     @media screen and (max-width: 625px) {
         margin: 0 290px;
     }
-
     @media screen and (max-width: 600px) {
         margin: 0 270px;
     }
-
     @media screen and (max-width: 575px) {
         margin: 0 235px;
     }
@@ -188,23 +155,19 @@ const StartGameButton = styled.button`
     border: solid 3px black;
     position: relative;
     right: 5px;
-
     @media screen and (max-width: 850px) {
         font-size: 14px;
         width: 120px;
         margin: 30px;
     }
-
     @media screen and (max-width: 600px) {
         font-size: 14px;
         width: 110px;
     }
-
     @media screen and (max-width: 575px) {
         font-size: 14px;
         width: 100px;
     }
-
 `;
 
 const HowToPlayButton = styled.button`
@@ -220,53 +183,41 @@ const HowToPlayButton = styled.button`
     border: solid 3px black;
     position: relative;
     right: 5px;
-
     @media screen and (max-width: 850px) {
         font-size: 14px;
         width: 120px;
         margin: 30px;
     }
-
     @media screen and (max-width: 600px) {
         font-size: 14px;
         width: 110px;
     }
-
     @media screen and (max-width: 575px) {
         font-size: 14px;
         width: 100px;
     }
-
 `;
 
 const ButtonLine2 = styled.div`
     display: flex;
-
-
     @media screen and (max-width: 750px) {
         margin: 0 360px;
     }
-
     @media screen and (max-width: 700px) {
         margin: 0 340px;
     }
-
     @media screen and (max-width: 675px) {
         margin: 0 320px;
     }
-
     @media screen and (max-width: 650px) {
         margin: 0 300px;
     }
-
     @media screen and (max-width: 625px) {
         margin: 0 290px;
     }
-
     @media screen and (max-width: 600px) {
         margin: 0 270px;
     }
-
     @media screen and (max-width: 575px) {
         margin: 0 235px;
     }
@@ -286,17 +237,14 @@ const LeaderboardButton = styled.button`
     position: relative;
     top: 10px;
     right: 5px;
-
     @media screen and (max-width: 850px) {
         font-size: 14px;
         width: 120px;
     }
-
     @media screen and (max-width: 600px) {
         font-size: 14px;
         width: 110px;
     }
-
     @media screen and (max-width: 575px) {
         font-size: 14px;
         width: 100px;
@@ -388,16 +336,17 @@ class HomePage extends React.Component {
                             onClick={this.handleClickLeaderboard.bind(this)}
                             >All-Time Leaderboard
                         </LeaderboardButton>
-
+                   
                         {this.renderContent1()}
                     </ButtonLine2>
                 </StyledStartGame>
             </StartGameBackground>
+            
 
         )} else if (this.state.clickedGame === true && this.state.clickedHowTo === false && this.state.clickedLeaderboard === false) {
             return <MultipleChoice/>
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === true && this.state.clickedLeaderboard === false) {
-            return <Instructions/>
+            return <Modal/>
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === false && this.state.clickedLeaderboard === true) {
             return <Leaderboard/>
     }
