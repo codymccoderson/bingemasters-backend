@@ -30,7 +30,7 @@ const StyledStartGame = styled.div`
     height: 12.5rem;
     margin: 0 auto;
     position: relative;
-    top: 8rem;
+    top: 3rem;
     right: 9rem;
 
     @media screen and (max-width: 90rem) {
@@ -125,7 +125,7 @@ const StyledStartGame = styled.div`
 const StartGameTitle = styled.h1`
     color: black;
     font-family: 'Retro', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 5rem;
+    font-size: 4.5rem;
 
     @media screen and (max-width: 86.25rem) {
         font-size: 4.875rem;
@@ -214,8 +214,10 @@ const ImageWrapper = styled.div`
         border-radius: 0.625rem;
         box-sizing: border-box;
         border: solid 0.5rem pink;
-        width: 14.688rem;
-        height: 14.688rem;
+        width: 14rem;
+        height: 14rem;
+        position: relative;
+        bottom: 0.75rem;
 
         @media screen and (max-width: 64rem) {
             border: solid 0.5rem black;
@@ -232,6 +234,7 @@ const ImageWrapper = styled.div`
 
 const ButtonLine = styled.div`
     display: flex;
+   
     @media screen and (max-width: 750px) {
         margin: 0 360px;
     }
@@ -260,14 +263,18 @@ const StartGameButton = styled.button`
     color: black;
     :hover {color: white};
     transition: color .1s;
+    position: relative;
+    bottom: 2.5rem;
     font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 0.875rem;
     padding: 0.625rem;
-    margin: 1.9rem;
-    width: 6rem;
+    margin: 0.5rem;
+    margin-right: 1rem;
+    width: 7rem;
     border-radius: 0.5rem;
     box-sizing: border-box;
     border: solid 0.188rem black;
+    
 
     @media screen and (max-width: 64rem) {
         font-size: 1.5rem;
@@ -308,16 +315,17 @@ const HowToPlayButton = styled.button`
     :hover {color: white};
     transition: color .1s;
     color: black;
+    position: relative;
+    bottom: 2.5rem;
     font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 0.875rem;
     padding: 0.625rem;
-    margin: 1.9rem;
-    width: 6rem;
+    margin: 0.5rem;
+    margin-right: 1rem;
+    width: 7rem;
     border-radius: 0.5rem;
     box-sizing: border-box;
     border: solid 0.188rem black;
-    position: relative;
-    right: 0.95rem;
 
     @media screen and (max-width: 64rem) {
         font-size: 1.5rem;
@@ -350,69 +358,22 @@ const HowToPlayButton = styled.button`
 
 `;
 
-const ButtonLine2 = styled.div`
-    display: flex;
-    position: relative;
-    bottom: 1.25rem;
-
-
-    @media screen and (max-width: 46.875rem) {
-        margin: 0 22.5rem;
-    }
-
-    @media screen and (max-width: 43.75rem) {
-        margin: 0 21.25rem;
-    }
-
-    @media screen and (max-width: 42.188rem) {
-        margin: 0 20rem;
-    }
-
-    @media screen and (max-width: 40.625rem) {
-        margin: 0 18.75rem;
-    }
-
-    @media screen and (max-width: 39.063rem) {
-        margin: 0 18.125rem;
-    }
-
-    @media screen and (max-width: 37.5rem) {
-        margin: 0 16.875rem;
-    }
-
-    @media screen and (max-width: 35.938rem) {
-        margin: 0 14.688rem;
-    }
-
-    @media screen and (max-width: 26.563rem) {
-        position: relative;
-        top: -2.5rem;
-        right: 0.5rem;
-    }
-
-    @media screen and (max-width: 25rem) {
-        padding: 0.3rem;
-        position: relative;
-        right: 1.5rem;
-        top: -2rem;
-    }    
-`;
-
 const LeaderboardButton = styled.button`
     background-color: pink;
     color: black;
+    position: relative;
+    bottom: 2.5rem;
     :hover {color: white};
     transition: color .1s;
     font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 0.875rem;
     padding: 0.625rem;
-    margin: 1.9rem;
-    width: 6rem;
+    margin: 0.5rem;
+    margin-right: 1rem;
+    width: 7rem;
     border-radius: 0.5rem;
     box-sizing: border-box;
     border: solid 0.188rem black;
-    position: relative;
-    right: 1.5rem;
 
     @media screen and (max-width: 64rem) {
         font-size: 1.5rem;
@@ -486,9 +447,26 @@ class HomePage extends React.Component {
             case null:
                 return;
             case false:
-                return <li><a href="/auth/google">Login With Google</a></li>
+                return <button type='submit' onClick= {() => {window.open("/auth/google")}} style={{
+                    backgroundColor: 'black',
+                    color: 'pink',
+                    // 'a:hover': {color: 'white'},
+                    // transition: {color: '.1s'},
+                    fontFamily: 'Gill Sans', 'Gill Sans MT': 'Calibri', 'TrebuchetMS': 'sansSerif',
+                    fontSize: '1rem',
+                    padding: '0.625rem',
+                    margin: '0.5rem',
+                    height: '3rem',
+                    width: '10rem',
+                    borderRadius: '0.5rem',
+                    boxSizing: 'border-box',
+                    border: 'solid', '0.188rem': 'black',
+                    position: 'relative',
+                    bottom: '2.5rem'
+                }}
+                    >Login with Google</button>
             default: 
-                return <li><a href="/api/logout">Logout</a></li>
+                return <a href="/api/logout"><button>Logout</button></a>
         }
     }
 
@@ -518,20 +496,16 @@ class HomePage extends React.Component {
                             onClick={this.handleClickHowTo.bind(this)}
                             >How to Play   
                         </HowToPlayButton>
-                    </ButtonLine>
-                    <ButtonLine2>
-                        
-                        <Modal/>
-
-                    <LeaderboardButton
+                        <LeaderboardButton
                         type="submit"
                         onClick={this.handleClickLeaderboard.bind(this)}
                         >Leaderboard
-                    </LeaderboardButton>
-                    
-                    {this.renderContent1()}
-
-                    </ButtonLine2>
+                        </LeaderboardButton>
+                   
+                        <Modal/>
+                        {this.renderContent1()}
+                        
+                    </ButtonLine>
                 </StyledStartGame>
             </StartGameBackground>
             

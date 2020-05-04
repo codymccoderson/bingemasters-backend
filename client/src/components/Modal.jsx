@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
-import HomePage from './HomePage';
 import './Modal.css';
 
 

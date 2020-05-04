@@ -1,15 +1,16 @@
 .Modal {
     background-color: white;
-    position: absolute;
+    position: relative;
     top: 12rem;
     left: 4rem;
     right: 4rem;
     bottom: 12rem;
     border: 1px solid black;
-    overflow: auto;
+    overflow: hidden;
     border-radius: 4px;
     outline: none;
     padding: 20px;
+    
 }
 
 .ModalButton {
@@ -17,5 +18,4 @@
     
     background: pink;
     position: relative;
-    left: 50%;
 }
