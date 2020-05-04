@@ -3,240 +3,185 @@ import styled from 'styled-components';
 import another_retro_tv from '../another_retro_tv.png';
 import HomePage from './HomePage';
 import MultipleChoice from './MultipleChoice';
+import tv_static2 from '../tv_static2.jpg';
 
 const GameOverBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
     background-size: 80vw 92vh;
     height: 100vh; 
+    font-size: 16px;
+
+    @media screen and (max-width: 53.125rem) {
+        background: url(${tv_static2}) no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+    } 
 `
 
 const StyledGameOver = styled.div`
     display: flex;
     align-items: center;
     flex-flow: column;
-    width: 200px;
-    height: 200px;
+    width: 12.5rem;
+    height: 12.5rem;
     margin: 0 auto;
-    padding-left: 0;
     position: relative;
-    top: 330px;
-    right: 130px;
+    top: 15rem;
+    right: 9rem;
 
-    @media screen and (max-width: 1000px) {
-        margin: 0 430px;
+    @media screen and (max-width: 68rem) {
+        margin: 0 30rem;
     }
 
-    @media screen and (max-width: 950px) {
-        margin: 0 420px;
+    @media screen and (max-width: 65rem) {
+        margin: 0 28rem;
     }
 
-    @media screen and (max-width: 900px) {
-        margin: 0 400px;
+    @media screen and (max-width: 62.5rem) {
+        margin: 0 26.875rem;
     }
 
-    @media screen and (max-width: 850px) {
-        margin: 0 380px;
+    @media screen and (max-width: 59.375rem) {
+        margin: 0 26.25rem;
     }
 
-    @media screen and (max-width: 800px) {
-        margin: 0 360px;
+    @media screen and (max-width: 54.375rem) {
+        margin: 0 25rem;
     }
 
-    @media screen and (max-width: 750px) {
-        margin: 0 340px;
+    @media screen and (max-width: 53.125rem) {
+        margin: 0 28rem;
+        position: relative;
+        bottom: 4rem;
     }
 
-    @media screen and (max-width: 700px) {
-        margin: 0 320px;
+    @media screen and (max-width: 48rem) {
+        margin: 0 27rem;
     }
 
-    @media screen and (max-width: 675px) {
-        margin: 0 300px;
+    @media screen and (max-width: 46.875rem) {
+        margin: 0 24rem;
     }
 
-    @media screen and (max-width: 650px) {
-        margin: 0 290px;
+    @media screen and (max-width: 43.750rem) {
+        margin: 0 23rem;
+    }
+    
+    @media screen and (max-width: 42.188rem) {
+        margin: 0 22rem;
     }
 
-    @media screen and (max-width: 625px) {
-        margin: 0 280px;
+    @media screen and (max-width: 40.625rem) {
+        margin: 0 21rem;
     }
 
-    @media screen and (max-width: 600px) {
-        margin: 0 270px;
+    @media screen and (max-width: 39.063rem) {
+        margin: 0 20rem;
     }
 
-    @media screen and (max-width: 585px) {
-        margin: 0 255px;
+    @media screen and (max-width: 37.5rem) {
+        margin: 0 19rem;
     }
 
-    @media screen and (max-width: 575px) {
-        margin: 0 240px;
+    @media screen and (max-width: 36.563rem) {
+        margin: 0 18rem;
+    }
+
+    @media screen and (max-width: 35.938rem) {
+        margin: 0 17rem;
+    }
+
+    @media screen and (max-width: 26.563rem) {
+        margin: 0 16rem;
+    }
+
+    @media screen and (max-width: 23.438rem) {
+        margin: 0 14.7rem;
+    }
+
+    @media screen and (max-width: 20rem) {
+        margin: 0 13rem;
     }
 `;
 
 const GameOverTitle = styled.h1`
     color: black;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 36px;
+    font-family: 'Retro', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2rem;
 `;
 
 const ButtonLine = styled.div`
     display: flex;
 
 
-    @media screen and (max-width: 750px) {
-        margin: 0 360px;
+    @media screen and (max-width: 46.875rem) {
+        margin: 0 22.5rem;
     }
 
-    @media screen and (max-width: 700px) {
-        margin: 0 340px;
+    @media screen and (max-width: 43.75rem) {
+        margin: 0 21.25rem;
     }
 
-    @media screen and (max-width: 675px) {
-        margin: 0 320px;
+    @media screen and (max-width: 42.188rem) {
+        margin: 0 20rem;
     }
 
-    @media screen and (max-width: 650px) {
-        margin: 0 300px;
+    @media screen and (max-width: 40.625rem) {
+        margin: 0 18.75rem;
     }
 
-    @media screen and (max-width: 625px) {
-        margin: 0 290px;
+    @media screen and (max-width: 39.063rem) {
+        margin: 0 18.125rem;
     }
 
-    @media screen and (max-width: 600px) {
-        margin: 0 270px;
+    @media screen and (max-width: 37.5rem) {
+        margin: 0 16.875rem;
     }
 
-    @media screen and (max-width: 575px) {
-        margin: 0 235px;
+    @media screen and (max-width: 35.938rem) {
+        margin: 0 14.688rem;
     }
 `
 
 const PlayAgain = styled.button`
     background-color: pink;
     color: black;
+    :hover {color: white};
+    transition: color .1s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
-    padding: 10px;
-    margin: 5px;
-    width: 150px;
-    border-radius: 8px;
+    font-size: 1rem;
+    padding: 0.625rem;
+    margin: 0.5rem;
+    width: 8rem;
+    border-radius: 0.5rem;
     box-sizing: border-box;
-    border: solid 3px black;
+    border: solid 0.188rem black;
     position: relative;
-    right: 5px;
-
-    @media screen and (max-width: 850px) {
-        font-size: 14px;
-        width: 120px;
+    right: 0.313rem;
+    @media screen and (max-width: 53.125rem) {
+        font-size: 0.875rem;
+        width: 7.5rem;
     }
-
-    @media screen and (max-width: 800px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 750px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 700px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 675px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 650px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 625px) {
-        font-size: 14px;
-        width: 120px;
-
-    }
-
-    @media screen and (max-width: 600px) {
-        font-size: 14px;
-        width: 110px;
-    }
-
-    @media screen and (max-width: 575px) {
-        font-size: 14px;
-        width: 100px;
-    }
-
 `;
-
-
 
 const ReturnHomeButton = styled.button`
     background-color: pink;
     color: black;
+    :hover {color: white};
+    transition: color .1s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
-    padding: 10px;
-    margin: 5px;
-    margin-right: 30px;
-    width: 150px;
-    border-radius: 8px;
+    font-size: 1rem;
+    padding: 0.625rem;
+    margin: 0.5rem;
+    width: 8rem;
+    border-radius: 0.5rem;
     box-sizing: border-box;
-    border: solid 3px black;
+    border: solid 0.188rem black;
     position: relative;
-    right: 5px;
-
-    @media screen and (max-width: 850px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 800px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 750px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 700px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 675px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 650px) {
-        font-size: 14px;
-        width: 120px;
-    }
-
-    @media screen and (max-width: 625px) {
-        font-size: 14px;
-        width: 120px;
-
-    }
-
-    @media screen and (max-width: 600px) {
-        font-size: 14px;
-        width: 110px;
-    }
-
-    @media screen and (max-width: 575px) {
-        font-size: 14px;
-        width: 100px;
+    right: 0.313rem;
+    @media screen and (max-width: 53.125rem) {
+        font-size: 0.875rem;
+        width: 7.5rem;
     }
 `;
 
