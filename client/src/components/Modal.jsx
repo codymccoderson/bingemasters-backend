@@ -21,7 +21,7 @@ class Modal extends Component {
   
   render () {
     return (
-      <div>
+      <div className="Modal-Wrapper">
         <button onClick={this.handleOpenModal.bind(this)}>Main Menu</button>
         <ReactModal 
            isOpen={this.state.showModal}
@@ -29,10 +29,9 @@ class Modal extends Component {
            onRequestClose={this.handleCloseModal}
            className='Modal'
            shouldCloseOnOverlayClick={false}
-           
         >
-          <p>Are you sure?</p>
-          <p>If you continue, your score will not be recorded.</p>
+          <p className="ModalText">Are you sure?</p>
+          <p className="ModalText">If you continue, your score will not be recorded.</p>
           <div>
           <a href='/'><button className="ModalButton">Continue</button></a>
           <button className="ModalButton" onClick={this.handleCloseModal.bind(this)}>Go Back</button>

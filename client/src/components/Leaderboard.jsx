@@ -513,7 +513,7 @@ class Leaderboard extends React.Component {
                                     </div>
                                     ) : (
                                         <span>
-                                            <p style={{fontSize: '4.5rem'}}>Login to view the leaderboard</p>
+                                            <p style={{fontSize: '1rem', transform: `translate(${-230}px, ${0}px)`}}>Users must login to see the leaderboard</p>
                                         </span>
                                     )
                                     }

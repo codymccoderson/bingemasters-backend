@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import Modal from './Modal';
 import SelectDifficulty from './SelectDifficulty';
 import silhouette from '../silhouette.jpg';
+import PostScore from './PostScore';
 
 
 const StartGameBackground = styled.div`
@@ -466,7 +467,24 @@ class HomePage extends React.Component {
                 }}
                     >Login with Google</button>
             default: 
-                return <a href="/api/logout"><button>Logout</button></a>
+                return <button type='submit' onClick= {() => {window.open("/api/logout")}} style={{
+                    backgroundColor: 'black',
+                    color: 'pink',
+                    // 'a:hover': {color: 'white'},
+                    // transition: {color: '.1s'},
+                    fontFamily: 'Gill Sans', 'Gill Sans MT': 'Calibri', 'TrebuchetMS': 'sansSerif',
+                    fontSize: '1rem',
+                    padding: '0.625rem',
+                    margin: '0.5rem',
+                    height: '3rem',
+                    width: '10rem',
+                    borderRadius: '0.5rem',
+                    boxSizing: 'border-box',
+                    border: 'solid', '0.188rem': 'black',
+                    position: 'relative',
+                    bottom: '2.5rem'
+                }}
+                >Logout</button>
         }
     }
 
@@ -501,8 +519,7 @@ class HomePage extends React.Component {
                         onClick={this.handleClickLeaderboard.bind(this)}
                         >Leaderboard
                         </LeaderboardButton>
-                   
-                        <Modal/>
+                
                         {this.renderContent1()}
                         
                     </ButtonLine>
@@ -515,7 +532,8 @@ class HomePage extends React.Component {
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === true && this.state.clickedLeaderboard === false) {
             return <Instructions/>
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === false && this.state.clickedLeaderboard === true) {
-            return <Leaderboard/>
+            // Change back to Leaderboard
+            return <PostScore/>
     }
 }}
 
