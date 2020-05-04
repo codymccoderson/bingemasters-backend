@@ -9,6 +9,7 @@ class GoogleLoginButton extends Component {
   }
 
   responseGoogle = (response) => {
+    //DEV TEST
     console.log(response);
     this.setState({
       isLoggedIn: true,

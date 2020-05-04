@@ -4,122 +4,269 @@ import another_retro_tv from '../another_retro_tv.png';
 import HomePage from './HomePage';
 import tv_static2 from '../tv_static2.jpg';
 import axios from 'axios';
-import Modal from './Modal';
 import PostScore from './PostScore';
 import { connect } from 'react-redux';
 
-const StartGameBackground = styled.div`
+const LeaderboardBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
     background-size: 80vw 92vh;
-    height: 100vh; 
-    @media screen and (max-width: 850px) {
+    height: 100vh;
+    font-size: 16px; 
+
+    @media screen and (max-width: 64rem) {
         background: url(${tv_static2}) no-repeat center center fixed;
         background-size: cover;
         height: 100vh;
+
     }
 `
-const StyledStartGame = styled.div`
+const CardWrapper = styled.div`
+
+    @media screen and (max-width: 64rem) {
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+        width: 30rem;
+        height: 34rem;
+        margin: 0 auto;
+        position: relative;
+        top: 8rem;
+        background-color: whitesmoke;
+        border-radius: 0.875rem;
+        box-sizing: border-box;
+        border: solid 0.2rem black;
+    }
+
+    @media (width: 64rem) and (height: 85.375rem) {
+        position: relative;
+        top: 15rem;
+        width: 34rem;
+        height: 38rem;
+    }
+
+    @media screen and (max-width: 48rem) {
+        position: relative;
+        top: 5rem;
+        margin: 0 8rem;
+        height: 32rem;   
+    } 
+
+    @media (width: 48rem) and (height: 64rem) {
+        position: relative;
+        top: 14rem;
+        left: 0.5rem;
+    }
+
+    @media screen and (max-width: 44rem) {
+        margin: 0 7rem;   
+    }
+
+    @media screen and (max-width: 40rem) {
+        margin: 0 4rem;   
+    } 
+
+    @media screen and (max-width: 36rem) {
+        margin: 0 2.5rem;   
+    }
+
+    @media screen and (max-width: 34rem) {
+        margin: 0 0.6rem;   
+    }
+
+    @media screen and (max-width: 26.563rem) {
+        margin: 0 0.8rem;
+        position: relative;
+        top: 8rem;
+        width: 25rem;
+        height: 30rem;   
+    }
+
+    @media (width: 25.875rem) and (height: 46rem) {
+        position: relative;
+        top: 7.5rem;
+        right: 0.35rem;
+    }
+
+    @media (width: 25.688rem) and (height: 51.438rem) {
+        position: relative;
+        top: 9.5rem;
+        right: 0.5rem;
+    }
+
+    @media (width: 25.688rem) and (height: 45.688rem) {
+        position: relative;
+        top: 7.5rem;
+        right: 0.5rem;
+    }
+
+    @media screen and (max-width: 23.438rem) {
+        width: 20.5rem;
+        margin: 0 1.4rem;  
+    }
+
+    @media (width: 23.438rem) and (height: 41.688rem) {
+        position: relative;
+        top: 5rem;
+    }
+
+    @media (width: 23.438rem) and (height: 50.75rem) {
+        position: relative;
+        top: 10rem;
+    }
+
+    @media (width: 22.5rem) and (height: 40rem) {
+        position: relative;
+        top: 5rem;
+        right: 0.4rem;
+
+    }
+
+    @media screen and (max-width: 20rem) {
+        margin: 0 1.4rem;
+        position: relative;
+        top: 8rem;
+        width: 17rem; 
+    } 
+    
+    @media (width: 20rem) and (height: 35.5rem) {
+        position: relative;
+        top: 2.5rem;
+    }
+`
+
+const StyledLeaderboard = styled.div`
     display: flex;
     align-items: center;
     flex-flow: column;
-    width: 700px;
-    height: 700px;
+    width: 43.75rem;
+    height: 43.75rem;
     margin: 0 auto;
     position: relative;
-    top: 100px;
-    right: 150px;
-    @media screen and (max-width: 1430px) {
-        margin: 0 390px;
-        width: 700px;
-        height: 700px;
+    top: 9rem;
+    right: 10rem;
+
+    @media screen and (max-width: 90rem) {
+        margin: 0 24.375rem;
+        position: relative;
+        right: 10rem;
+        width: 43.75rem;
+        height: 43.75rem;
+
     }
-    @media screen and (max-width: 1400px) {
-        margin: 0 380px;
-        width: 660px;
-        height: 660px;
+
+    @media screen and (max-width: 87.5rem) {
+        margin: 0 23.75rem;
+        width: 41.25rem;
+        height: 41.25rem;
+
     }
-    @media screen and (max-width: 1390px) {
-        margin: 0 370px;
-        width: 620px;
-        height: 620px;
+    @media screen and (max-width: 86.875rem) {
+        margin: 0 23.125rem;
+        width: 38.75rem;
+        height: 38.75rem;
     }
-    @media screen and (max-width: 1340px) {
-        margin: 0 370px;
-        width: 580px;
-        height: 580px;
+
+    @media screen and (max-width: 83.75rem) {
+        width: 36.25rem;
+        height: 36.25rem;
     }
-    @media screen and (max-width: 1290px) {
-        margin: 0 360px;
-        width: 540px;
-        height: 540px;
+
+    @media screen and (max-width: 80.625rem) {
+        margin: 0 22.5rem;
+        width: 33.75rem;
+        height: 33.75rem;
     }
-    @media screen and (max-width: 1240px) {
-        margin: 0 360px;
-        width: 500px;
-        height: 500px;
+
+    @media screen and (max-width: 77.5rem) {
+        width: 31.25rem;
+        height: 31.25rem;
     }
-    @media screen and (max-width: 1190px) {
-        margin: 0 360px;
-        width: 460px;
-        height: 460px;
+
+    @media screen and (max-width: 74.375rem) {
+        width: 28.75rem;
+        height: 28.75rem;
     }
-    @media screen and (max-width: 1140px) {
-        margin: 0 360px;
-        width: 420px;
-        height: 420px;
+
+    @media screen and (max-width: 71.25rem) {
+        width: 26.25rem;
+        height: 26.25rem;
     }
-    @media screen and (max-width: 1090px) {
-        margin: 0 340px;
-        width: 420px;
-        height: 420px;
+
+    @media screen and (max-width: 68.125rem) {
+        margin: 0 23rem;
     }
-    @media screen and (max-width: 1040px) {
-        margin: 0 340px;
-        width: 400px;
-        height: 400px;
+
+    @media screen and (max-width: 64rem) {
+        position: relative;
+        top: 3.5rem;
+        right: 3.5rem;
+        margin: 0 17.5rem;
+        width: 30rem;
+        height: 30rem;
     }
-    @media screen and (max-width: 990px) {
-        margin: 0 320px;
-        width: 380px;
-        height: 380px;
+
+    @media screen and (max-width: 61.875rem) {
+        margin: 0 19rem;
+        width: 23.75rem;
+        height: 23.75rem;
     }
-    @media screen and (max-width: 940px) {
-        margin: 0 320px;
-        width: 360px;
-        height: 360px;
+
+    @media screen and (max-width: 58.75rem) {
+        width: 22.5rem;
+        height: 22.5rem;
     }
-    @media screen and (max-width: 890px) {
-        margin: 0 300px;
-        width: 340px;
-        height: 340px;
+
+    @media screen and (max-width: 55.625rem) {
+        margin: 0 18.25rem;
+        width: 21.25rem;
+        height: 21.25rem;
     }
-    @media screen and (max-width: 850px) {
-        margin: 0 280px;
-        width: 480px;
-        height: 480px;
+
+    @media screen and (max-width: 49.375rem) {
+        margin: 0 16.25rem;
+        width: 28.75rem;
+        height: 28.75rem;
     }
-    @media screen and (max-width: 840px) {
-        margin: 0 280px;
+
+    @media screen and (max-width: 48rem) {
+        position: relative;
+        top: 2rem;
+        right: 2rem;
+        margin: 0 18rem;
+        width: 27.5rem;
+        height: 27.5rem;
     }
-    @media screen and (max-width: 790px) {
-        margin: 0 260px;
-        width: 460px;
-        height: 460px;
+
+    @media screen and (max-width: 43.125rem) {
+        margin: 0 17rem;
+        width: 26.25rem;
+        height: 26.25rem;
     }
-    @media screen and (max-width: 740px) {
-        margin: 0 240px;
-        width: 440px;
-        height: 440px;
+
+    @media screen and (max-width: 41.6rem) {
+        margin: 0 16rem;
+        width: 25rem;
+        height: 25rem;
     }
-    @media screen and (max-width: 690px) {
-        margin: 0 220px;
-        width: 420px;
-        height: 420px;
+
+    @media screen and (max-width: 40.8rem) {
+        margin: 0 13rem;
+        width: 25rem;
+        height: 25rem;
     }
-    @media screen and (max-width: 640px) {
-        margin: 0 200px;
-        width: 400px;
-        height: 400px;
+
+    @media screen and (max-width: 40rem) {
+        margin: 0 10rem;
+    }
+
+    @media screen and (max-width: 26.563rem) {
+        margin: 0 9rem;
+    }
+
+    @media screen and (max-width: 23.438rem) {
+        margin: 0 7.5rem;
+        position: relative;
+        right: 1.7rem;
     }
 `;
 
@@ -222,16 +369,11 @@ const ReturnHomeButton = styled.button`
     }
 `;
 
-
-
 class Leaderboard extends React.Component {
 
     state = {
         clickedReturn: false,
         list: [],
-        formFields: {name:'', score:''},
-        name:'',
-        score:''
     }
 
     componentDidMount() {
@@ -294,19 +436,19 @@ class Leaderboard extends React.Component {
         });
        }
     
-       onChangeName(e) {
-           this.setState({
-               name: e.target.value
-           });
-       }
+    onChangeName(e) {
+        this.setState({
+            name: e.target.value
+        });
+    }
 
-       onChangeScore(e) {
-           this.setState({
-               score: e.target.value
-           });
-       }
-       
-       renderContent1() {
+    onChangeScore(e) {
+        this.setState({
+            score: e.target.value
+        });
+    }
+    
+    renderContent1() {
         switch (this.props.auth) {
             case null:
                 return;
@@ -328,74 +470,73 @@ class Leaderboard extends React.Component {
 
         }
     }
-       formHandler(formFields) {
-        axios.post('/api/scores/post', formFields)
-          .then(function(response){
-            console.log(response);
-            //Perform action based on response
-        })
-          .catch(function(error){
-            console.log(error);
-            //Perform action based on error
-          });
-       }
+    formHandler(formFields) {
+    axios.post('/api/scores/post', formFields)
+        .then(function(response){
+        console.log(response);
+        //Perform action based on response
+    })
+        .catch(function(error){
+        console.log(error);
+        //Perform action based on error
+        });
+    }
 
     render() {
 
         const { list } = this.state;
-        const { formFields } = this.state;
-        const { name, score } = this.state;
 
         if (this.state.clickedReturn === false) {
 
         return(
-            <StartGameBackground>
-                <StyledStartGame>
-    
-                        <LeaderboardTitle>
-                            Greatest Bingemasters
-                        </LeaderboardTitle>
-                        <div className="LeaderboardWrapper" style={{overflowY:'scroll', border:'1px black'}}>
-                        <LeaderboardTable>
-                            {list.length ? (
-                            <div>
-                            {list.map((item) => {
-                                return(
-                                    <tr>
-                                        <th>{item.name}</th>
-                                        
-                                        <th>{item.score}</th>
-                                    </tr>
-                                );
-                            })}
+            <LeaderboardBackground>
+                <CardWrapper>
+                    <StyledLeaderboard>
+                            <LeaderboardTitle>
+                                Greatest Bingemasters
+                            </LeaderboardTitle>
+                            <div className="LeaderboardWrapper" style={{overflowX: 'hidden', overflowY:'scroll', border:'1px black'}}>
+                                <LeaderboardTable>
+                                    {list.length ? (
+                                    <div>
+                                    {list.map((item) => {
+                                        return(
+                                            <tbody>
+                                            <tr>
+                                                <th>{item.name}</th>
+                                                
+                                                <th>{item.score}</th>
+                                            </tr>
+                                            </tbody>
+                                        );
+                                    })}
+                                    </div>
+                                    ) : (
+                                        <span>
+                                            <p style={{fontSize: '4.5rem'}}>Login to view the leaderboard</p>
+                                        </span>
+                                    )
+                                    }
+                                </LeaderboardTable>
+                            <ButtonLine>
+                            </ButtonLine>
                             </div>
-                            ) : (
-                                <span>
-                                    <p style={{fontSize: '1rem', width: '100%', marginright:'20%'}}>Login to view the leaderboard</p>
-                                </span>
-                            )
-                            }
-                        </LeaderboardTable>
-                       
-                       
-                    <ButtonLine>
-                        
-                       
-                    </ButtonLine>
-                    </div>
-                    <ReturnHomeButton 
-                        type="submit"
-                        onClick={this.handleClickReturn.bind(this)}
-                        >Return Home      
-                    </ReturnHomeButton>
-                </StyledStartGame>
-            </StartGameBackground>
+                            <ReturnHomeButton 
+                                type="submit"
+                                onClick={this.handleClickReturn.bind(this)}
+                                >Return Home      
+                            </ReturnHomeButton>
+                        </StyledLeaderboard>
+                    </CardWrapper>
+                </LeaderboardBackground>
         )} else {
             return <HomePage/> 
-}}
-
+        }
+    }
 }
+
 function mapStateToProps ({ auth }) {
     return { auth };
 }
+
 export default connect(mapStateToProps)(Leaderboard);

@@ -4,18 +4,19 @@ import another_retro_tv from '../another_retro_tv.png';
 import Instructions from './Instructions';
 import Leaderboard from './Leaderboard';
 import tv_static2 from '../tv_static2.jpg';
-import MultipleChoice from './MultipleChoice';
 import { connect } from 'react-redux';
 import Modal from './Modal';
-import PostScore from './PostScore';
-import { Link } from 'react-router-dom';
+import SelectDifficulty from './SelectDifficulty';
+import silhouette from '../silhouette.jpg';
 
 
 const StartGameBackground = styled.div`
     background: url(${another_retro_tv}) no-repeat center center fixed;
     background-size: 80vw 92vh;
     height: 100vh; 
-    @media screen and (max-width: 850px) {
+    font-size: 16px;
+
+    @media screen and (max-width: 64rem) {
         background: url(${tv_static2}) no-repeat center center fixed;
         background-size: cover;
         height: 100vh;
@@ -25,97 +26,209 @@ const StyledStartGame = styled.div`
     display: flex;
     align-items: center;
     flex-flow: column;
-    width: 200px;
-    height: 200px;
+    width: 12.5rem;
+    height: 12.5rem;
     margin: 0 auto;
-    padding-left: 0;
     position: relative;
-    top: 230px;
-    right: 150px;
-    @media screen and (max-width: 1380px) {
-        margin: 0 590px;
+    top: 8rem;
+    right: 9rem;
+
+    @media screen and (max-width: 90rem) {
+        margin: 0 39.5rem;
+
     }
-    @media screen and (max-width: 1320px) {
-        margin: 0 545px;
+
+    @media screen and (max-width: 86.25rem) {
+        margin: 0 36.875rem;
+
     }
-    @media screen and (max-width: 1180px) {
-        margin: 0 515px;
+    @media screen and (max-width: 82.5rem) {
+        margin: 0 34.5rem;
     }
-    @media screen and (max-width: 1180px) {
-        margin: 0 500px;
+
+    @media screen and (max-width: 73.75rem) {
+        margin: 0 32rem;
     }
-    @media screen and (max-width: 1080px) {
-        margin: 0 480px;
+
+    @media screen and (max-width: 67.5rem) {
+        margin: 0 30rem;
     }
-    @media screen and (max-width: 950px) {
-        margin: 0 435px;
-    }
-    @media screen and (max-width: 900px) {
-        margin: 0 400px;
-    }
-    @media screen and (max-width: 850px) {
-        margin: 0 450px;
+
+    @media screen and (max-width: 64rem) {
+        margin: 0 35rem;
         display: flex;
         align-items: center;
         flex-flow: column;
-        width: 200px;
-        height: 200px;
-        padding-left: 0;
+        width: 12.5rem;
+        height: 12.5rem;
         position: relative;
-        top: 230px;
     }
-    @media screen and (max-width: 800px) {
-        margin: 0 410px;
+
+    @media screen and (max-width: 60rem) {
+        margin: 0 32rem;
     }
-    @media screen and (max-width: 750px) {
-        margin: 0 400px;
+
+    @media screen and (max-width: 51rem) {
+        margin: 0 28rem;
     }
-    @media screen and (max-width: 700px) {
-        margin: 0 380px;
+
+    @media screen and (max-width: 48rem) {
+        margin: 0 27rem;
     }
-    @media screen and (max-width: 675px) {
-        margin: 0 350px;
+
+    @media screen and (max-width: 43.75rem) {
+        margin: 0 24.5rem;
     }
-    @media screen and (max-width: 650px) {
-        margin: 0 340px;
+
+    @media screen and (max-width: 42.188rem) {
+        margin: 0 23rem;
     }
-    @media screen and (max-width: 625px) {
-        margin: 0 330px;
+
+    @media screen and (max-width: 40.625rem) {
+        margin: 0 21.5rem;
     }
-    @media screen and (max-width: 600px) {
-        margin: 0 320px;
+
+    @media screen and (max-width: 39.063rem) {
+        margin: 0 20rem;
     }
-    @media screen and (max-width: 585px) {
-        margin: 0 310px;
+
+    @media screen and (max-width: 37.5rem) {
+        margin: 0 19rem;
     }
-    @media screen and (max-width: 575px) {
-        margin: 0 300px;
+
+    @media screen and (max-width: 35.938rem) {
+        margin: 0 18rem;
+    }
+
+    @media screen and (max-width: 26.563rem) {
+        margin: 0 16.5rem;
+    }
+
+    @media screen and (max-width: 25.875rem) {
+        margin: 0 16.1rem;
+    }
+
+    @media screen and (max-width: 23.438rem) {
+        margin: 0 15.7rem;
+    }
+
+    @media screen and (max-width: 20rem) {
+        margin: 0 14.3rem;
+    }
+
+    @media screen and (max-height: 35.5rem) {
+        position: relative;
+        top: 4rem;
     }
 `;
 
 const StartGameTitle = styled.h1`
     color: black;
-    font-family: 'Retro', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 80px;
-    @media screen and (max-width: 1380px) {
-        font-size: 78px;
+    font-family: 'Retro', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 5rem;
+
+    @media screen and (max-width: 86.25rem) {
+        font-size: 4.875rem;
     }
-    @media screen and (max-width: 1320px) {
-        font-size: 72px;
+
+    @media screen and (max-width: 82.5rem) {
+        font-size: 4.5rem;
     }
-    @media screen and (max-width: 1180px) {
-        font-size: 60px;
+
+    @media screen and (max-width: 73.75rem) {
+        font-size: 3.75rem;
     }
-    @media screen and (max-width: 1080px) {
-        font-size: 48px;
+
+    @media screen and (max-width: 67.5rem) {
+        font-size: 3.5rem;
     }
-    @media screen and (max-width: 850px) {
-        font-size: 60px;
+
+    @media screen and (max-width: 64rem) {
+        font-size: 4.5rem;
+        font-weight: bolder;
+        color: pink;
+        text-shadow: -1.1px 0 black, 0 1.1px black, 1.1px 0 black, 0 -1.1px black;
     }
-    @media screen and (max-width: 650px) {
-        font-size: 52px;
-    }  
-`;
+
+    @media screen and (max-width: 60rem) {
+        font-size: 3.5rem;
+    }
+
+    @media screen and (max-width: 40.625rem) {
+        font-size: 3.25rem;
+    }
+
+    @media screen and (max-width: 26.563rem) {
+        font-size: 2.5rem;
+        position: relative;
+        right: 0.35rem;
+    }
+
+    @media screen and (max-width: 25.688rem) {
+        position: relative;
+        right: 0.2rem;
+    }
+
+    @media screen and (max-width: 23.438rem) {
+        position: relative;
+        right: 1rem;
+    }
+
+    @media screen and (max-width: 22.5rem) {
+        position: relative;
+        right: 1.5rem;
+    }
+
+    @media screen and (max-width: 20rem) {
+        font-size: 2.25rem;
+    }    
+    `;
+
+const ImageWrapper = styled.div`
+
+    position: relative;
+    bottom: 2rem;
+    right: 0.2rem;
+
+    @media screen and (max-width: 64rem) {
+        position: relative;
+        bottom: 1rem;
+    }
+
+    @media screen and (max-width: 26.563rem) {
+        position: relative;
+        right: 0.5rem;
+    }
+
+    @media screen and (max-width: 23.438rem) {
+        position: relative;
+        right: 1.3rem;
+    }
+
+    @media screen and (max-width: 22.5rem) {
+        position: relative;
+        right: 1.7rem;
+    }
+
+    .theActorImg {
+        border-radius: 0.625rem;
+        box-sizing: border-box;
+        border: solid 0.5rem pink;
+        width: 14.688rem;
+        height: 14.688rem;
+
+        @media screen and (max-width: 64rem) {
+            border: solid 0.5rem black;
+            width: 16rem;
+            height: 16rem;
+        }
+
+        @media screen and (max-width: 60rem) {
+            width: 14.688rem;
+            height: 14.688rem;
+        }
+    }
+`
 
 const ButtonLine = styled.div`
     display: flex;
@@ -148,28 +261,46 @@ const StartGameButton = styled.button`
     :hover {color: white};
     transition: color .1s;
     font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
-    padding: 10px;
-    margin: 20px;
-    width: 150px;
-    border-radius: 8px;
+    font-size: 0.875rem;
+    padding: 0.625rem;
+    margin: 1.9rem;
+    width: 6rem;
+    border-radius: 0.5rem;
     box-sizing: border-box;
-    border: solid 3px black;
-    position: relative;
-    right: 5px;
-    @media screen and (max-width: 850px) {
-        font-size: 14px;
-        width: 120px;
-        margin: 30px;
+    border: solid 0.188rem black;
+
+    @media screen and (max-width: 64rem) {
+        font-size: 1.5rem;
+        width: 10rem;
     }
-    @media screen and (max-width: 600px) {
-        font-size: 14px;
-        width: 110px;
+
+    @media screen and (max-width: 48rem) {
+        font-size: 1rem;
+        width: 7rem;
     }
-    @media screen and (max-width: 575px) {
-        font-size: 14px;
-        width: 100px;
+
+    @media screen and (max-width: 26.563rem) {
+        font-size: 0.875rem;
+        width: 6rem;
+        position: relative;
+        right: -0.8rem;
     }
+    
+    @media screen and (max-width: 23.438rem) {
+        position: relative;
+        right: -1rem;
+    }
+
+    @media screen and (max-width: 22.5rem) {
+        position: relative;
+        right: -1.25rem;
+    }
+
+    @media screen and (max-width: 20rem) {
+        position: relative;
+        right: -1.5rem;
+    }  
+
 `;
 
 const HowToPlayButton = styled.button`
@@ -178,53 +309,93 @@ const HowToPlayButton = styled.button`
     transition: color .1s;
     color: black;
     font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
-    padding: 10px;
-    margin: 20px;
-    width: 150px;
-    border-radius: 8px;
+    font-size: 0.875rem;
+    padding: 0.625rem;
+    margin: 1.9rem;
+    width: 6rem;
+    border-radius: 0.5rem;
     box-sizing: border-box;
-    border: solid 3px black;
+    border: solid 0.188rem black;
     position: relative;
-    right: 5px;
-    @media screen and (max-width: 850px) {
-        font-size: 14px;
-        width: 120px;
-        margin: 30px;
+    right: 0.95rem;
+
+    @media screen and (max-width: 64rem) {
+        font-size: 1.5rem;
+        width: 10rem;
+        position: relative;
+        right: 0.6rem;
     }
-    @media screen and (max-width: 600px) {
-        font-size: 14px;
-        width: 110px;
+
+    @media screen and (max-width: 48rem) {
+        font-size: 1rem;
+        width: 7rem;
     }
-    @media screen and (max-width: 575px) {
-        font-size: 14px;
-        width: 100px;
+
+    @media screen and (max-width: 26.563rem) {
+        position: relative;
+        right: 1.1rem;
+        font-size: 0.875rem;
+        width: 6rem;
     }
+    
+    @media screen and (max-width: 23.438rem) {
+        position: relative;
+        right: 1.9rem;
+    }
+
+    @media screen and (max-width: 20rem) {
+        position: relative;
+        right: 1.8rem;
+    }  
+
 `;
 
 const ButtonLine2 = styled.div`
     display: flex;
-    @media screen and (max-width: 750px) {
-        margin: 0 360px;
+    position: relative;
+    bottom: 1.25rem;
+
+
+    @media screen and (max-width: 46.875rem) {
+        margin: 0 22.5rem;
     }
-    @media screen and (max-width: 700px) {
-        margin: 0 340px;
+
+    @media screen and (max-width: 43.75rem) {
+        margin: 0 21.25rem;
     }
-    @media screen and (max-width: 675px) {
-        margin: 0 320px;
+
+    @media screen and (max-width: 42.188rem) {
+        margin: 0 20rem;
     }
-    @media screen and (max-width: 650px) {
-        margin: 0 300px;
+
+    @media screen and (max-width: 40.625rem) {
+        margin: 0 18.75rem;
     }
-    @media screen and (max-width: 625px) {
-        margin: 0 290px;
+
+    @media screen and (max-width: 39.063rem) {
+        margin: 0 18.125rem;
     }
-    @media screen and (max-width: 600px) {
-        margin: 0 270px;
+
+    @media screen and (max-width: 37.5rem) {
+        margin: 0 16.875rem;
     }
-    @media screen and (max-width: 575px) {
-        margin: 0 235px;
+
+    @media screen and (max-width: 35.938rem) {
+        margin: 0 14.688rem;
     }
+
+    @media screen and (max-width: 26.563rem) {
+        position: relative;
+        top: -2.5rem;
+        right: 0.5rem;
+    }
+
+    @media screen and (max-width: 25rem) {
+        padding: 0.3rem;
+        position: relative;
+        right: 1.5rem;
+        top: -2rem;
+    }    
 `;
 
 const LeaderboardButton = styled.button`
@@ -233,28 +404,49 @@ const LeaderboardButton = styled.button`
     :hover {color: white};
     transition: color .1s;
     font-family: 'Gill Sans MT', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
-    padding: 10px;
-    margin: 5px;
-    width: 130px;
-    border-radius: 8px;
+    font-size: 0.875rem;
+    padding: 0.625rem;
+    margin: 1.9rem;
+    width: 6rem;
+    border-radius: 0.5rem;
     box-sizing: border-box;
-    border: solid 3px black;
+    border: solid 0.188rem black;
     position: relative;
-    top: 10px;
-    right: 5px;
-    @media screen and (max-width: 850px) {
-        font-size: 14px;
-        width: 120px;
+    right: 1.5rem;
+
+    @media screen and (max-width: 64rem) {
+        font-size: 1.5rem;
+        width: 10rem;
     }
-    @media screen and (max-width: 600px) {
-        font-size: 14px;
-        width: 110px;
+
+    @media screen and (max-width: 48rem) {
+        font-size: 1rem;
+        width: 7rem;
+        position: relative;
+        right: 1.8rem;
     }
-    @media screen and (max-width: 575px) {
-        font-size: 14px;
-        width: 100px;
+
+    @media screen and (max-width: 26.563rem) {
+        position: relative;
+        right: 3rem;
+        font-size: 0.875rem;
+        width: 6rem;
     }
+
+    @media screen and (max-width: 23.438rem) {
+        position: relative;
+        right: 4.8rem;
+    }
+
+    @media screen and (max-width: 22.5rem) {
+        position: relative;
+        right: 5rem;
+    }
+
+    @media screen and (max-width: 20rem) {
+        position: relative;
+        right: 5.1rem;
+    }  
 `;
 
 class HomePage extends React.Component {
@@ -300,18 +492,6 @@ class HomePage extends React.Component {
         }
     }
 
-    renderContent2() {
-        switch (this.props.auth) {
-            case null:
-                return;
-            case false:
-                return;
-            default: 
-                return <PostScore/>
-
-        }
-    }
-
     render() {
         // dev test
         console.log(this.props);
@@ -324,6 +504,9 @@ class HomePage extends React.Component {
                     <StartGameTitle>
                         Bingemasters
                     </StartGameTitle>
+                    <ImageWrapper>
+                        <img className="theActorImg" src={silhouette} alt="this... is a random actor"/>
+                    </ImageWrapper>
                     <ButtonLine>
                         <StartGameButton 
                             type="submit"
@@ -339,20 +522,22 @@ class HomePage extends React.Component {
                     <ButtonLine2>
                         
                         <Modal/>
-                        <LeaderboardButton
-                            type="submit"
-                            onClick={this.handleClickLeaderboard.bind(this)}
-                            >Leaderboard
-                        </LeaderboardButton>
-                   
-                        {this.renderContent1()}
+
+                    <LeaderboardButton
+                        type="submit"
+                        onClick={this.handleClickLeaderboard.bind(this)}
+                        >Leaderboard
+                    </LeaderboardButton>
+                    
+                    {this.renderContent1()}
+
                     </ButtonLine2>
                 </StyledStartGame>
             </StartGameBackground>
             
 
         )} else if (this.state.clickedGame === true && this.state.clickedHowTo === false && this.state.clickedLeaderboard === false) {
-            return <MultipleChoice/>
+            return <SelectDifficulty/>
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === true && this.state.clickedLeaderboard === false) {
             return <Instructions/>
     }      else if (this.state.clickedGame === false && this.state.clickedHowTo === false && this.state.clickedLeaderboard === true) {
