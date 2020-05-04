@@ -59,6 +59,7 @@ render() {
                             value="Submit" 
                             onClick={this.handleOpenModal.bind(this)}
                         />
+                        
                         <ReactModal 
                         isOpen={this.state.showModal}
                         contentLabel="onRequestClose Example"
